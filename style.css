@@ -357,3 +357,40 @@ footer {
 
     margin-bottom: 25px;
 }
+
+.canvas-actions {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.canvas-actions button {
+
+    padding: 12px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    background: #cdb4db;
+
+    color: white;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.canvas-actions button:hover {
+
+    transform: translateY(-3px);
+}

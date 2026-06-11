@@ -245,3 +245,20 @@ document
             );
         }
     );
+
+    document
+    .getElementById("saveDrawing")
+    .addEventListener("click", () => {
+
+        const link =
+            document.createElement("a");
+
+        link.download =
+            "doodle-for-mihir.png";
+
+        link.href =
+            canvas.toDataURL("image/png");
+
+        link.click();
+
+    });
