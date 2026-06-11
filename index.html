@@ -2,153 +2,314 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
     <title>Mihir Mohanta | Portfolio</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css">
 
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body>
 
-    <header>
-        <nav>
-            <h2>Mihir Mohanta</h2>
+    <nav>
 
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+        <div class="logo">
+            Mihir Mohanta
+        </div>
 
-            <button id="theme-btn">
-                <i class="fa-solid fa-moon"></i>
-            </button>
-        </nav>
-    </header>
+        <ul>
+
+            <li><a href="#about">About</a></li>
+
+            <li><a href="#skills">Skills</a></li>
+
+            <li><a href="#projects">Projects</a></li>
+
+            <li><a href="#experience">Experience</a></li>
+
+            <li><a href="#contact">Contact</a></li>
+
+        </ul>
+
+    </nav>
 
     <section class="hero">
 
-        <img src="images/profile.png" alt="Profile Photo">
+        <div class="hero-text">
 
-        <h1>Hi, I'm Mihir Mohanta</h1>
+            <h1>Hello, I'm Mihir 👋</h1>
 
-        <p>
-            Computer Science Engineering Student
-            <br>
-            Python • Java • Machine Learning • Web Development
-        </p>
+            <h2 id="role"></h2>
 
-        <div class="buttons">
-            <a href="#projects" class="btn">Projects</a>
-            <a href="resume.pdf" class="btn" download>Download Resume</a>
+            <p>
+
+                Computer Science Engineering Student passionate
+                about Software Development, Machine Learning,
+                Problem Solving and building practical applications.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#projects"
+                    class="btn">
+
+                    View Projects
+
+                </a>
+
+                <a
+                    href="resume.pdf"
+                    download
+                    class="btn secondary">
+
+                    Download Resume
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="hero-image">
+
+            <img
+                src="images/profile.png"
+                alt="Mihir Mohanta">
+
         </div>
 
     </section>
 
-    <section id="about">
+    <section
+        id="about"
+        class="reveal">
 
         <h2>About Me</h2>
 
-        <p>
-            I am a Computer Science Engineering student passionate about
-            software development, machine learning, and problem solving.
-            I enjoy building practical applications and continuously
-            exploring new technologies.
-        </p>
+        <div class="about-box">
+
+            <p>
+
+                I am a Computer Science Engineering student at UPES
+                with interests in Software Development, Machine
+                Learning, UI Design and Technology Exploration.
+
+                I enjoy creating useful applications and continuously
+                learning new technologies.
+
+            </p>
+
+        </div>
 
     </section>
 
-    <section id="skills">
+    <section
+        id="skills"
+        class="reveal">
 
         <h2>Skills</h2>
 
-        <div class="card-container">
+        <div class="cards">
 
             <div class="card">
+
                 <h3>Programming</h3>
-                <p>Python, Java, C</p>
+
+                <p>
+
+                    Python<br>
+                    Java<br>
+                    C
+
+                </p>
+
             </div>
 
             <div class="card">
+
                 <h3>Tools</h3>
-                <p>Git, VS Code, MS Office</p>
+
+                <p>
+
+                    Git<br>
+                    VS Code<br>
+                    MS Office
+
+                </p>
+
             </div>
 
             <div class="card">
+
                 <h3>Soft Skills</h3>
-                <p>Leadership, Teamwork, Problem Solving</p>
+
+                <p>
+
+                    Leadership<br>
+                    Teamwork<br>
+                    Problem Solving
+
+                </p>
+
             </div>
 
         </div>
 
     </section>
 
-    <section id="projects">
+    <section
+        id="projects"
+        class="reveal">
 
         <h2>Projects</h2>
 
-        <div class="card-container">
+        <div class="cards">
 
             <div class="card">
+
                 <h3>Weather App</h3>
 
                 <p>
-                    Built using Python and OpenWeatherMap API.
-                    Includes city search and dark/light mode.
+
+                    Python weather application using
+                    OpenWeatherMap API with city search
+                    and theme switching.
+
                 </p>
+
             </div>
 
             <div class="card">
-                <h3>Fake News Detection</h3>
+
+                <h3>Fake News Detector</h3>
 
                 <p>
-                    Machine Learning web app using Logistic Regression
-                    to classify fake and spam news.
+
+                    Machine Learning web application
+                    using Logistic Regression.
+
                 </p>
+
             </div>
 
             <div class="card">
+
                 <h3>Fitness Tracker</h3>
 
                 <p>
-                    Mobile app to track meals, calories,
-                    and exercise routines.
+
+                    Mobile application for monitoring
+                    meals, calories and exercises.
+
                 </p>
+
             </div>
 
         </div>
 
     </section>
 
-    <section id="contact">
+    <section
+        id="experience"
+        class="reveal">
 
-        <h2>Contact</h2>
+        <h2>Experience & Leadership</h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+
+                <h3>Volunteer Intern</h3>
+
+                <p>
+
+                    NGO Gavaksh – Window to Happiness
+
+                </p>
+
+            </div>
+
+            <div class="timeline-item">
+
+                <h3>Teaching Head</h3>
+
+                <p>
+
+                    NGO Gavaksh – Window to Happiness
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section
+        id="contact"
+        class="reveal">
+
+        <h2>Let's Connect</h2>
 
         <div class="socials">
 
-            <a href="mailto:mihir.16964@stu.upes.ac.in" title="Email">
+            <a
+                href="mailto:mihir.16964@stu.upes.ac.in"
+                title="Email">
+
                 <i class="fa-solid fa-envelope"></i>
+
             </a>
 
-            <a href="https://www.linkedin.com/in/mihir-pasta6969/" target="_blank" title="LinkedIn">
+            <a
+                href="https://www.linkedin.com/in/mihir-pasta6969/"
+                target="_blank">
+
                 <i class="fab fa-linkedin"></i>
+
             </a>
 
-            <a href="https://github.com/Mihir-007" target="_blank" title="GitHub">
+            <a
+                href="https://github.com/Mihir-007"
+                target="_blank">
+
                 <i class="fab fa-github"></i>
+
             </a>
 
         </div>
 
     </section>
 
+    <button id="top-btn">
+
+        ↑
+
+    </button>
+
     <footer>
-        <p>© 2026 Mihir Mohanta</p>
+
+        <p>
+
+            © <span id="year"></span>
+            Mihir Mohanta
+
+        </p>
+
     </footer>
 
     <script src="script.js"></script>
