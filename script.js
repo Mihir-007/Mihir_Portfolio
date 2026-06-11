@@ -117,3 +117,131 @@ topButton.addEventListener("click", () => {
     });
 
 });
+
+const canvas =
+    document.getElementById("drawingCanvas");
+
+const ctx =
+    canvas.getContext("2d");
+
+let drawing = false;
+
+let currentColor = "#000000";
+
+ctx.lineWidth = 4;
+ctx.lineCap = "round";
+
+function startDraw(event) {
+
+    drawing = true;
+
+    draw(event);
+}
+
+function stopDraw() {
+
+    drawing = false;
+
+    ctx.beginPath();
+}
+
+function draw(event) {
+
+    if (!drawing) return;
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const x =
+        (event.clientX || event.touches[0].clientX)
+        - rect.left;
+
+    const y =
+        (event.clientY || event.touches[0].clientY)
+        - rect.top;
+
+    ctx.strokeStyle =
+        currentColor;
+
+    ctx.lineTo(x, y);
+
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(x, y);
+}
+
+canvas.addEventListener(
+    "mousedown",
+    startDraw
+);
+
+canvas.addEventListener(
+    "mouseup",
+    stopDraw
+);
+
+canvas.addEventListener(
+    "mouseleave",
+    stopDraw
+);
+
+canvas.addEventListener(
+    "mousemove",
+    draw
+);
+
+canvas.addEventListener(
+    "touchstart",
+    startDraw
+);
+
+canvas.addEventListener(
+    "touchend",
+    stopDraw
+);
+
+canvas.addEventListener(
+    "touchmove",
+    draw
+);
+
+document
+    .querySelectorAll(".color-btn")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                currentColor =
+                    button.dataset.color;
+            }
+        );
+    });
+
+document
+    .getElementById("eraser")
+    .addEventListener(
+        "click",
+        () => {
+
+            currentColor = "#ffffff";
+        }
+    );
+
+document
+    .getElementById("clearCanvas")
+    .addEventListener(
+        "click",
+        () => {
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+        }
+    );
