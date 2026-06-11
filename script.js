@@ -2,14 +2,14 @@ const roles = [
     "Computer Science Student",
     "Python Developer",
     "Machine Learning Enthusiast",
-    "Problem Solver"
+    "UI/UX Enthusiast",
+    "Technology Explorer"
 ];
 
 let roleIndex = 0;
 let charIndex = 0;
 
-const roleElement =
-    document.getElementById("role");
+const roleElement = document.getElementById("role");
 
 function typeText() {
 
@@ -63,8 +63,7 @@ function revealSections() {
         const position =
             element.getBoundingClientRect().top;
 
-        if (position <
-            window.innerHeight - 100) {
+        if (position < window.innerHeight - 100) {
 
             element.classList.add("active");
         }
@@ -80,7 +79,8 @@ window.addEventListener(
 
 revealSections();
 
-document.getElementById("year")
+document
+    .getElementById("year")
     .textContent =
     new Date().getFullYear();
 
@@ -92,16 +92,12 @@ window.addEventListener("scroll", () => {
     if (window.scrollY > 500) {
 
         topButton.style.opacity = "1";
-
-        topButton.style.pointerEvents =
-            "auto";
+        topButton.style.pointerEvents = "auto";
     }
     else {
 
         topButton.style.opacity = "0";
-
-        topButton.style.pointerEvents =
-            "none";
+        topButton.style.pointerEvents = "none";
     }
 
 });
@@ -121,144 +117,239 @@ topButton.addEventListener("click", () => {
 const canvas =
     document.getElementById("drawingCanvas");
 
-const ctx =
-    canvas.getContext("2d");
+if (canvas) {
 
-let drawing = false;
+    const ctx =
+        canvas.getContext("2d");
 
-let currentColor = "#000000";
+    let drawing = false;
 
-ctx.lineWidth = 4;
-ctx.lineCap = "round";
+    let currentColor = "#000000";
 
-function startDraw(event) {
+    ctx.lineWidth = 5;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
 
-    drawing = true;
+    function getPosition(event) {
 
-    draw(event);
-}
+        const rect =
+            canvas.getBoundingClientRect();
 
-function stopDraw() {
+        let x;
+        let y;
 
-    drawing = false;
+        if (event.touches) {
 
-    ctx.beginPath();
-}
+            x =
+                event.touches[0].clientX -
+                rect.left;
 
-function draw(event) {
+            y =
+                event.touches[0].clientY -
+                rect.top;
+        }
+        else {
 
-    if (!drawing) return;
+            x =
+                event.clientX -
+                rect.left;
 
-    const rect =
-        canvas.getBoundingClientRect();
+            y =
+                event.clientY -
+                rect.top;
+        }
 
-    const x =
-        (event.clientX || event.touches[0].clientX)
-        - rect.left;
+        return { x, y };
+    }
 
-    const y =
-        (event.clientY || event.touches[0].clientY)
-        - rect.top;
+    function startDrawing(event) {
 
-    ctx.strokeStyle =
-        currentColor;
+        event.preventDefault();
 
-    ctx.lineTo(x, y);
+        drawing = true;
 
-    ctx.stroke();
+        const pos =
+            getPosition(event);
 
-    ctx.beginPath();
+        ctx.beginPath();
 
-    ctx.moveTo(x, y);
-}
+        ctx.moveTo(
+            pos.x,
+            pos.y
+        );
+    }
 
-canvas.addEventListener(
-    "mousedown",
-    startDraw
-);
+    function draw(event) {
 
-canvas.addEventListener(
-    "mouseup",
-    stopDraw
-);
+        if (!drawing) return;
 
-canvas.addEventListener(
-    "mouseleave",
-    stopDraw
-);
+        event.preventDefault();
 
-canvas.addEventListener(
-    "mousemove",
-    draw
-);
+        const pos =
+            getPosition(event);
 
-canvas.addEventListener(
-    "touchstart",
-    startDraw
-);
+        ctx.strokeStyle =
+            currentColor;
 
-canvas.addEventListener(
-    "touchend",
-    stopDraw
-);
+        ctx.lineTo(
+            pos.x,
+            pos.y
+        );
 
-canvas.addEventListener(
-    "touchmove",
-    draw
-);
+        ctx.stroke();
+    }
 
-document
-    .querySelectorAll(".color-btn")
-    .forEach(button => {
+    function stopDrawing() {
 
-        button.addEventListener(
+        drawing = false;
+
+        ctx.beginPath();
+    }
+
+    canvas.addEventListener(
+        "mousedown",
+        startDrawing
+    );
+
+    canvas.addEventListener(
+        "mousemove",
+        draw
+    );
+
+    canvas.addEventListener(
+        "mouseup",
+        stopDrawing
+    );
+
+    canvas.addEventListener(
+        "mouseleave",
+        stopDrawing
+    );
+
+    canvas.addEventListener(
+        "touchstart",
+        startDrawing,
+        { passive: false }
+    );
+
+    canvas.addEventListener(
+        "touchmove",
+        draw,
+        { passive: false }
+    );
+
+    canvas.addEventListener(
+        "touchend",
+        stopDrawing
+    );
+
+    document
+        .querySelectorAll(".color-btn")
+        .forEach(button => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    currentColor =
+                        button.dataset.color;
+                }
+            );
+
+        });
+
+    document
+        .getElementById("eraser")
+        ?.addEventListener(
             "click",
             () => {
 
                 currentColor =
-                    button.dataset.color;
+                    "#ffffff";
             }
         );
-    });
-
-document
-    .getElementById("eraser")
-    .addEventListener(
-        "click",
-        () => {
-
-            currentColor = "#ffffff";
-        }
-    );
-
-document
-    .getElementById("clearCanvas")
-    .addEventListener(
-        "click",
-        () => {
-
-            ctx.clearRect(
-                0,
-                0,
-                canvas.width,
-                canvas.height
-            );
-        }
-    );
 
     document
-    .getElementById("saveDrawing")
-    .addEventListener("click", () => {
+        .getElementById("clearCanvas")
+        ?.addEventListener(
+            "click",
+            () => {
 
-        const link =
-            document.createElement("a");
+                ctx.clearRect(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+            }
+        );
 
-        link.download =
-            "doodle-for-mihir.png";
+    document
+        .getElementById("saveDrawing")
+        ?.addEventListener(
+            "click",
+            () => {
 
-        link.href =
-            canvas.toDataURL("image/png");
+                const exportCanvas =
+                    document.createElement(
+                        "canvas"
+                    );
 
-        link.click();
+                exportCanvas.width =
+                    canvas.width;
 
-    });
+                exportCanvas.height =
+                    canvas.height;
+
+                const exportCtx =
+                    exportCanvas.getContext(
+                        "2d"
+                    );
+
+                exportCtx.fillStyle =
+                    "#ffffff";
+
+                exportCtx.fillRect(
+                    0,
+                    0,
+                    exportCanvas.width,
+                    exportCanvas.height
+                );
+
+                exportCtx.drawImage(
+                    canvas,
+                    0,
+                    0
+                );
+
+                const link =
+                    document.createElement(
+                        "a"
+                    );
+
+                link.download =
+                    "doodle-for-mihir.png";
+
+                link.href =
+                    exportCanvas.toDataURL(
+                        "image/png"
+                    );
+
+                link.click();
+
+            }
+        );
+
+    document
+        .getElementById("sendDrawing")
+        ?.addEventListener(
+            "click",
+            () => {
+
+                alert(
+                    "Connect EmailJS to enable sending doodles."
+                );
+
+            }
+        );
+}
